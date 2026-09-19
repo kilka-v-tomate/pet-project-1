@@ -157,6 +157,38 @@
         <!-- Страница: Терминал -->
         <section id="terminal" class="page">
             <h2>💻 Симулятор командной строки</h2>
+            
+            <!-- Блок задания -->
+            <div class="task-block" id="task-block">
+                <div class="task-header">
+                    <h3 id="task-title">📋 Задание #1</h3>
+                    <div class="task-actions">
+                        <button class="action-btn hint-btn" onclick="showHint()" title="Подсказка">
+                            <i class="fas fa-question-circle"></i> Подсказка
+                        </button>
+                        <button class="action-btn article-btn" onclick="showArticle()" title="Статья по теме">
+                            <i class="fas fa-book-open"></i> Теория
+                        </button>
+                        <button class="action-btn skip-btn" onclick="skipTask()" title="Пропустить">
+                            <i class="fas fa-forward"></i> Пропустить
+                        </button>
+                    </div>
+                </div>
+                <div class="task-description" id="task-description">
+                    Создайте директорию /tmp/devops и перейдите в неё
+                </div>
+                <div class="task-hint" id="task-hint" style="display:none;">
+                    <strong>💡 Подсказка:</strong> <span id="hint-text"></span>
+                </div>
+                <div class="task-progress">
+                    <span>Задание <span id="current-task-num">1</span> из <span id="total-tasks-num">0</span></span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="task-progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Консоль -->
             <div class="terminal-container">
                 <div class="terminal-header">
                     <div class="terminal-buttons">
@@ -172,22 +204,37 @@
                             <p> Добро пожаловать в DevOps Terminal Simulator!</p>
                             <p> Введите 'help' для списка доступных команд.</p>
                             <br>
-                            <p>Текущая задача: <span id="terminal-task">Создайте директорию /tmp/devops и перейдите в неё</span></p>
+                            <p>Текущее задание: <span id="terminal-task-display">Создайте директорию /tmp/devops и перейдите в неё</span></p>
                         </div>
                     </div>
                     <div class="terminal-input-line">
-                        <span class="prompt">devops@learning:~$</span>
+                        <span class="prompt" id="terminal-prompt">devops@learning:~$</span>
                         <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false">
                     </div>
                 </div>
             </div>
+            
+            <!-- Список задач -->
             <div class="terminal-tasks">
-                <h3>📋 Доступные задачи</h3>
+                <h3>📚 Все задания (<span id="completed-tasks-count">0</span>/<span id="all-tasks-count">0</span>)</h3>
+                <div class="task-filters">
+                    <button class="filter-btn active" data-filter="all" onclick="filterTasks('all')">Все</button>
+                    <button class="filter-btn" data-filter="available" onclick="filterTasks('available')">Доступные</button>
+                    <button class="filter-btn" data-filter="completed" onclick="filterTasks('completed')">Завершенные</button>
+                </div>
                 <div class="task-list" id="task-list">
                     <!-- Задачи будут загружены динамически -->
                 </div>
             </div>
         </section>
+        
+        <!-- Модальное окно подсказки/статьи -->
+        <div class="modal" id="info-modal">
+            <div class="modal-content modal-large">
+                <span class="close-modal" onclick="closeInfoModal()">&times;</span>
+                <div id="info-modal-body"></div>
+            </div>
+        </div>
 
         <!-- Страница: Тесты -->
         <section id="tests" class="page">
