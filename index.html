@@ -3,28 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shablon_1</title>
+    <title>DevOps Learning Platform - Полный курс для Junior DevOps</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="main-div">
-        <div class="div-pic">
-            <img src="Blog Image.png" alt="Описание изображения">
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-terminal"></i>
+            <span>DevOps Path</span>
         </div>
-        <div class="main-text">
-            <p class="upper-p">Learning</p>
-            <p class="second-p">Published 20 July 2025</p>
-            <h2 class="h2-class">HTML & CSS foundations</h2>
-            <p class="p-last-paragraph">These languages are the backbone of every website, defining structure, content, and presentation.</p>
+        <ul class="nav-links">
+            <li><a href="#" data-page="home" class="active"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a href="#" data-page="curriculum"><i class="fas fa-book"></i> Программа</a></li>
+            <li><a href="#" data-page="terminal"><i class="fas fa-laptop-code"></i> Терминал</a></li>
+            <li><a href="#" data-page="tests"><i class="fas fa-clipboard-check"></i> Тесты</a></li>
+            <li><a href="#" data-page="progress"><i class="fas fa-chart-line"></i> Прогресс</a></li>
+        </ul>
+        <div class="user-info">
+            <span id="current-level">Уровень: Новичок</span>
+            <div class="progress-bar-mini">
+                <div class="progress-fill" id="mini-progress" style="width: 0%"></div>
+            </div>
         </div>
-        <div class="podpis">
-            <img class="img" src="skeleton1.png" alt="skeleton">
-            <p>Alex Polaguto</p>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <!-- Страница: Главная -->
+        <section id="home" class="page active">
+            <div class="hero-section">
+                <h1>🚀 Путь в DevOps</h1>
+                <p class="hero-subtitle">Полный курс для перехода из IT Support в Junior DevOps Engineer</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-book-open"></i>
+                        <span class="stat-number" id="total-modules">0</span>
+                        <span class="stat-label">Модулей</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="stat-number" id="total-lessons">0</span>
+                        <span class="stat-label">Уроков</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="stat-number" id="total-tests">0</span>
+                        <span class="stat-label">Тестов</span>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-terminal"></i>
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Симулятор</span>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="navigateTo('curriculum')">
+                    <i class="fas fa-play"></i> Начать обучение
+                </button>
+            </div>
+            
+            <div class="roadmap-section">
+                <h2>📍 Ваш путь обучения</h2>
+                <div class="roadmap">
+                    <div class="roadmap-stage completed">
+                        <div class="stage-icon"><i class="fas fa-check"></i></div>
+                        <div class="stage-content">
+                            <h4>Linux Foundation</h4>
+                            <p>Продвинутый уровень</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-stage current">
+                        <div class="stage-icon"><i class="fas fa-running"></i></div>
+                        <div class="stage-content">
+                            <h4>Networking & Security</h4>
+                            <p>Сети и безопасность</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-stage">
+                        <div class="stage-icon"><i class="fas fa-lock"></i></div>
+                        <div class="stage-content">
+                            <h4>Containers & Orchestration</h4>
+                            <p>Docker и Kubernetes</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-stage">
+                        <div class="stage-icon"><i class="fas fa-infinity"></i></div>
+                        <div class="stage-content">
+                            <h4>CI/CD Pipelines</h4>
+                            <p>Непрерывная интеграция</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-stage">
+                        <div class="stage-icon"><i class="fas fa-cloud"></i></div>
+                        <div class="stage-content">
+                            <h4>Cloud & IaC</h4>
+                            <p>Облака и инфраструктура как код</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-stage">
+                        <div class="stage-icon"><i class="fas fa-flag"></i></div>
+                        <div class="stage-content">
+                            <h4>Monitoring & Logging</h4>
+                            <p>Мониторинг и логирование</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Программа обучения -->
+        <section id="curriculum" class="page">
+            <h2>📚 Программа обучения</h2>
+            <div class="modules-container" id="modules-container">
+                <!-- Модули будут загружены динамически -->
+            </div>
+        </section>
+
+        <!-- Страница: Урок -->
+        <section id="lesson" class="page">
+            <button class="back-button" onclick="navigateTo('curriculum')">
+                <i class="fas fa-arrow-left"></i> Назад к программе
+            </button>
+            <div class="lesson-container">
+                <div class="lesson-header">
+                    <span class="lesson-module" id="lesson-module">Модуль 1</span>
+                    <h2 id="lesson-title">Название урока</h2>
+                    <div class="lesson-meta">
+                        <span><i class="far fa-clock"></i> <span id="lesson-time">10 мин</span></span>
+                        <span><i class="far fa-bookmark"></i> <span id="lesson-difficulty">Легкий</span></span>
+                    </div>
+                </div>
+                <div class="lesson-content" id="lesson-content">
+                    <!-- Контент урока -->
+                </div>
+                <div class="lesson-navigation">
+                    <button class="nav-btn prev-btn" onclick="prevLesson()">
+                        <i class="fas fa-chevron-left"></i> Предыдущий
+                    </button>
+                    <button class="nav-btn complete-btn" onclick="completeLesson()">
+                        <i class="fas fa-check"></i> Завершить урок
+                    </button>
+                    <button class="nav-btn next-btn" onclick="nextLesson()">
+                        Следующий <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Терминал -->
+        <section id="terminal" class="page">
+            <h2>💻 Симулятор командной строки</h2>
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="terminal-btn close"></span>
+                        <span class="terminal-btn minimize"></span>
+                        <span class="terminal-btn maximize"></span>
+                    </div>
+                    <span class="terminal-title">devops@learning:~</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-output" id="terminal-output">
+                        <div class="welcome-message">
+                            <p> Добро пожаловать в DevOps Terminal Simulator!</p>
+                            <p> Введите 'help' для списка доступных команд.</p>
+                            <br>
+                            <p>Текущая задача: <span id="terminal-task">Создайте директорию /tmp/devops и перейдите в неё</span></p>
+                        </div>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="prompt">devops@learning:~$</span>
+                        <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+            </div>
+            <div class="terminal-tasks">
+                <h3>📋 Доступные задачи</h3>
+                <div class="task-list" id="task-list">
+                    <!-- Задачи будут загружены динамически -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Тесты -->
+        <section id="tests" class="page">
+            <h2>📝 Тестирование знаний</h2>
+            <div class="tests-overview">
+                <div class="test-filters">
+                    <button class="filter-btn active" data-filter="all">Все тесты</button>
+                    <button class="filter-btn" data-filter="available">Доступные</button>
+                    <button class="filter-btn" data-filter="completed">Завершенные</button>
+                </div>
+                <div class="tests-grid" id="tests-grid">
+                    <!-- Тесты будут загружены динамически -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Прохождение теста -->
+        <section id="quiz" class="page">
+            <button class="back-button" onclick="navigateTo('tests')">
+                <i class="fas fa-arrow-left"></i> Назад к тестам
+            </button>
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2 id="quiz-title">Название теста</h2>
+                    <div class="quiz-progress">
+                        <span>Вопрос <span id="current-question">1</span> из <span id="total-questions">10</span></span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quiz-progress-fill" style="width: 10%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-body">
+                    <div class="question-container" id="question-container">
+                        <!-- Вопрос будет загружен динамически -->
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="nav-btn" onclick="prevQuestion()" id="prev-question-btn">
+                            <i class="fas fa-chevron-left"></i> Назад
+                        </button>
+                        <button class="nav-btn submit-btn" onclick="submitAnswer()" id="submit-answer-btn">
+                            Ответить
+                        </button>
+                        <button class="nav-btn" onclick="nextQuestion()" id="next-question-btn" style="display:none;">
+                            Далее <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-results" id="quiz-results" style="display:none;">
+                    <h3>Результаты теста</h3>
+                    <div class="results-summary">
+                        <div class="result-score">
+                            <span class="score-number" id="final-score">0</span>
+                            <span class="score-total">из <span id="final-total">10</span></span>
+                        </div>
+                        <div class="result-percentage" id="result-percentage">0%</div>
+                    </div>
+                    <div class="result-message" id="result-message"></div>
+                    <button class="nav-btn retry-btn" onclick="retryQuiz()">
+                        <i class="fas fa-redo"></i> Пройти заново
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница: Прогресс -->
+        <section id="progress" class="page">
+            <h2>📊 Ваш прогресс</h2>
+            <div class="progress-dashboard">
+                <div class="progress-overview">
+                    <div class="overview-card">
+                        <h3>Общий прогресс</h3>
+                        <div class="circular-progress">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                                <circle class="progress-fill-circle" id="overall-progress" cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <span class="progress-text" id="overall-progress-text">0%</span>
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Завершено уроков</h3>
+                        <span class="big-number" id="completed-lessons">0/0</span>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Пройдено тестов</h3>
+                        <span class="big-number" id="completed-tests">0/0</span>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Средний балл</h3>
+                        <span class="big-number" id="average-score">0%</span>
+                    </div>
+                </div>
+                <div class="module-progress">
+                    <h3>Прогресс по модулям</h3>
+                    <div id="module-progress-list">
+                        <!-- Прогресс по модулям -->
+                    </div>
+                </div>
+                <div class="achievements">
+                    <h3>🏆 Достижения</h3>
+                    <div class="achievements-grid" id="achievements-grid">
+                        <!-- Достижения -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно урока -->
+    <div class="modal" id="lesson-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
         </div>
     </div>
+
+    <script src="app.js"></script>
 </body>
+</html>
